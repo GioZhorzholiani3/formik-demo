@@ -318,6 +318,7 @@ const initialValues = {
     facebook: "",
     twitter: "",
   },
+  phoneNumbers: ["", ""],
 };
 
 const validationSchema = Yup.object({
@@ -392,6 +393,15 @@ const DemoForm = () => {
           <div className="form-control">
             <label htmlFor="twitte">Facebook profile</label>
             <Field type="text" id="twitter" name="social.twitter" />
+          </div>
+
+          <div className="form-control">
+            <label htmlFor="primaryPh">Primary phone number</label>
+            <Field type="text" id="primaryPh" name="phoneNumbers[0]" />
+          </div>
+          <div className="form-control">
+            <label htmlFor="secondaryPh">Secondary phone number</label>
+            <Field type="text" id="secondaryPh" name="phoneNumbers[1]" />
           </div>
 
           <Button type="submit" variant="contained" endIcon={<SendIcon />}>
