@@ -303,7 +303,14 @@
 //?TODO: use formic component
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
-import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
+import {
+  Formik,
+  Form,
+  Field,
+  ErrorMessage,
+  FieldArray,
+  FastField,
+} from "formik";
 
 import * as Yup from "yup";
 import TextError from "./TextError";
@@ -370,9 +377,10 @@ const DemoForm = () => {
 
           <div className="form-control">
             <label htmlFor="address">Address</label>
-            <Field name="address">
+            <FastField name="address">
               {(props) => {
                 // console.log("Render props", props);
+                console.log("Field render");
                 const { field, form, meta } = props;
                 // console.log("Render props", props);
                 return (
@@ -384,7 +392,7 @@ const DemoForm = () => {
                   </div>
                 );
               }}
-            </Field>
+            </FastField>
           </div>
 
           <div className="form-control">
@@ -392,7 +400,7 @@ const DemoForm = () => {
             <Field type="text" id="facebook" name="social.facebook" />
           </div>
           <div className="form-control">
-            <label htmlFor="twitte">Facebook profile</label>
+            <label htmlFor="twitter">Facebook profile</label>
             <Field type="text" id="twitter" name="social.twitter" />
           </div>
 
@@ -409,7 +417,6 @@ const DemoForm = () => {
             <label>List of phone numbers</label>
             <FieldArray name="phNumbers">
               {(fieldArrayProps) => {
-                console.log("field array props", fieldArrayProps);
                 const { push, remove, form } = fieldArrayProps;
                 const { values } = form;
                 const { phNumbers } = values;
